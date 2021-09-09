@@ -60,7 +60,7 @@ if rad == '🏠 Home':
 
         st.title("Welcome to Lerys' Dashboard! \n ----")
         st.markdown("**Lérys Granado, OpenClassrooms Data Scientist, Project 7, Sept. 2021**")
-        st.text(os.getcwd())
+        st.text("")
 
 #######################################################################################
 
