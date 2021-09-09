@@ -31,6 +31,10 @@ Neither Gradient Boosting Classifier (scikit-learn) nor XGBoost Classifier were 
 ## Prediction analysis.
 ROC and precision-recall curves, confusion matrix and threshold optimization were subsequently performed on a validation set (splitted from application_train data).
 
+![alt text](https://github.com/LerysG/Project_7_OC_dashboard/blob/main/output.png?raw=true)
+
+
+
 
 ## 
 
