@@ -5,7 +5,7 @@ by Lérys Granado, PhD. Sept. 2021
 This is an app for education purposes and answering to the closed Kaggle competition:
 "Home Credit Default Risk" (https://www.kaggle.com/c/home-credit-default-risk)
 
-This project was composed of several objectives:
+This project was composed of two main objectives:
 - Develop a scoring machine learning model to predict the solvency of clients of a bank-like company (i.e. probability of credit payment failure).
 It is therefore a **binary classification issue**.
 - Build an interactive dashboard allowing interpretations of these probabilities and improve the company's knowledge on its clients.
@@ -15,11 +15,11 @@ Dashboard specifications:
 - Filter and visualize client's features.
 - Compare client's features to other clients.
 
-## Implementation and Methods.
-### Materials
+## Methods & Discussions.
+### Materials.
 Project was carried out locally, using JupyterNotebooks, Python 3.8 and necessary packages (especially: NumPy, Pandas, MatPlotLib, Seaborn, Scikit-Learn, LightGBM).
 
-### Exploratoraty data analysis (EDA)
+### Exploratoraty data analysis.
 EDA was performed on Jupyter Notebook herein associated.  Implementation was custom-made but inspired from various Kaggle kernels. Only the main dataset 'application_train.csv' was considered. Data were partially answered (25% missing value). One major observation is that the two classes are severely imbalanced (class=0/class=1 : 10/1). 
 
 ### Preprocessing.
@@ -42,6 +42,15 @@ Here's some observations:
   <img width="300" height="300" src="https://github.com/LerysG/Project_7_OC_dashboard/blob/main/output.png?raw=true">
 </p>
 
+## Dashboard.
+# Implementation.
+The interactive dashboard was implemented using **Streamlit** framework and coded in Python. The application *app.py* comes with the following items:
 
-## 
+-  Input data that are in the *input* folder. Note that for deployement purposes trainset was randomly sampled to reduce size (125 MB -> 25 MB). 
+
+- A personnal package named *my_functions* containing a module *functions* for function definitions. Note that for app optimization it is of essence to cache the functions. 
+
+- file: *optimized_model.sav*, containing the trained model. The package *pickle* was used to export the model after cross-validation and training. This file is not necessary even for the 1st utilization (if so, you must train model prior to predict).  One is free to better tune hyperparameters and overwrite the given model file.
+
+
 
