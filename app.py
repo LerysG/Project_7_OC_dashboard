@@ -20,7 +20,7 @@ sb = st.sidebar
 sb.image('https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.png' ,width=300)
 sb.image('https://enetelsolutions.co.il/wp-content/uploads/2019/08/brain@3x.webp' ,width=300)
 
-rad = sb.radio('', ['🏠 Home TEST', 
+rad = sb.radio('', ['🏠 Home', 
 '👁️ Data, at glance', 
 '🔎 Further explore data', 
 '💪 Model training',
