@@ -39,8 +39,8 @@ COLOR_BR = ['indianred', 'dodgerblue']
 
 #######################################################################################
 # Managing data import/export
-PATH = "https://github.com/LerysG/Project_7_OC_dashboard/tree/main/"
-PATH_INPUT = "https://github.com/LerysG/Project_7_OC_dashboard/tree/main/input/"
+PATH = "https://share.streamlit.io/lerysg/project_7_oc_dashboard/main/"
+PATH_INPUT = PATH+"input/"
 FILENAME_TRAIN = PATH_INPUT+'application_train_sample.csv'
 FILENAME_TEST = PATH_INPUT+'application_test.csv'
 FILENAME_MODEL = PATH+'optimized_model.sav'
