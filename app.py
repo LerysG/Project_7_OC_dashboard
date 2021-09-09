@@ -39,7 +39,7 @@ COLOR_BR = ['indianred', 'dodgerblue']
 
 #######################################################################################
 # Managing data import/export
-PATH = "https://share.streamlit.io/lerysg/project_7_oc_dashboard/main/"
+PATH = "/app/project_7_oc_dashboard/"
 PATH_INPUT = PATH+"input/"
 FILENAME_TRAIN = PATH_INPUT+'application_train_sample.csv'
 FILENAME_TEST = PATH_INPUT+'application_test.csv'
