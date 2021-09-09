@@ -23,10 +23,10 @@ Project was carried out locally, using JupyterNotebooks, Python 3.8 and necessar
 EDA was performed on Jupyter Notebook herein associated.  Implementation was custom-made but inspired from various Kaggle kernels. Only the main dataset 'application_train.csv' was considered. Data were partially answered (25% missing value). One major observation is that the two classes are severely imbalanced (class=0/class=1 : 10/1). 
 
 ### Preprocessing.
-First of all, train data were split in a train set (80%) and a validation set (20%). Data were preprocessed using a simple imputer (median) and standard scaler for numeric features and one-hot-encoder for categorical features. No sampling or data creation were necessary with the selected machine learning model (see next section). A dimension reduction approach was tested but unsuccessful. 
+First of all, raw train data were split in a train set (80%) and a validation set (20%). Data were preprocessed using a simple imputer (median) and standard scaler for numeric features and one-hot-encoder for categorical features. No sampling or data creation were necessary with the selected machine learning model (see next section). A dimension reduction approach was tested but unsuccessful. 
 
 ### Model selection.
-Neither Gradient Boosting Classifier (scikit-learn) nor XGBoost Classifier were enough performant to train model under reasonnable computation times. Only LightGBM Classifier (Microsoft) provided satisfying performances. Note that LightGBM classifier allows for weighing of data. This was my strategy to handle imbalanced classes (sampling was tested but did not yield any improvements). Randomized search with cross-validation was perform to estimate best model hyperparameters (on train set, using 3 stratified folds). Only poor improvements of scores were observed throughout the search. AUC-ROC score plateaus off near the 69-77% range. 
+Neither Gradient Boosting Classifier (scikit-learn) nor XGBoost Classifier were enough performant to train model under reasonnable computation times. Only LightGBM Classifier (Microsoft) provided satisfying performances. Note that LightGBM classifier allows for weighing of data. This was my strategy to handle imbalanced classes (sampling was tested but did not yield any further improvements). Positives were weighed by approx. 10 (as their count represents 10% of the negative count). Randomized search with cross-validation was performed to estimate best model hyperparameters (on train set, using 3 stratified folds). Only poor improvements of scores were observed throughout the search. AUC-ROC score plateaus off near the 69-77% range. 
 
 **Comments on the LightGBM Classifier model**:
 - Type: decision tree classifier.
@@ -34,7 +34,7 @@ Neither Gradient Boosting Classifier (scikit-learn) nor XGBoost Classifier were 
 - Optimization: gradient boosting, histogram-based algorithms.
 - Loss function: LogLoss.
 - Scoring (here): AUC-ROC.
-- Typical fit time: <1 min (300k samples, 200 features).
+- Typical fit time: few sec-1 min (for 300k samples, 200 features).
 - Interesting for: high performances, class weighing, categorical and sparse data (i.e., one-hot-encoded), accepts NaNs.
 
 <p align="center">
@@ -62,7 +62,7 @@ In addition, feature importance are displayed in JupyterNotebook.
 ### Implementation.
 This interactive dashboard was implemented using **Streamlit** framework and coded in Python. The packages needed to run this app are listed in file *requirements.txt*. The main application *app.py* comes with the following items:
 
-- Input data that are in the *input* folder (sampled-train and test sets). Note that for deployement purposes trainset was randomly sampled to reduce size (125 MB -> 25 MB). 
+- Input data that are in the *input* folder (sampled-train and test raw datasets). Note that for deployement purposes trainset was randomly sampled to reduce size (125 MB -> 25 MB). 
 
 - A personnal package named *my_functions* containing a module *functions* for function definitions. Note that for app optimization it is of essence to cache the functions. 
 
@@ -77,8 +77,8 @@ The app is composed of 5 indepenant sections:
 - **📈 Test model prediction**: probability predictions for a given client taken from test set (client ID choosed by user) and showing comparison of client with some clients of train set.
 
 ### Comments on this app.
-- It was very easily implemented even since dev codes only in Python (no HTML nor JS is required).
-- It is quite slow since every change make reload the page, be patient. The only reported workaround is to cache function, which has been done.
+- It was very easily implemented since coding was only done in Python (no HTML nor JS required).
+- It is quite slow since every change make reload the page, so thanks for being patient. The only reported workaround is to cache function, which has been done.
 
 
 
