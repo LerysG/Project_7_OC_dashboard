@@ -30,13 +30,17 @@ Neither Gradient Boosting Classifier (scikit-learn) nor XGBoost Classifier were 
 
 ### Prediction analysis.
 ROC and precision-recall curves, confusion matrix and threshold optimization were subsequently performed on a validation set (splitted from application_train data).
+Here's some observations:
 
+- **ROC curve**: Score is only fair, improvements can be achieved (up to +5% AUC) using rather complex feature engineering (as shown by some in Kaggle). Yet, this is not within the framework of this project. 
+
+- **G-means vs. threshold**: G-means is a scoring adapted to imbalanced data (comparing true and false positive rates). Finding maximum of the curve gives the output probability threshold above which sample is considerd positive. We note that this curve is not skewed, showing that the weighing approach to handle imbalanced classes was efficient during training. Probability threshold is near 50%.
+
+- **Precision-recall curve and conf. matrix**: We see that recall is near 66%, false negative (FN) is actually worst than false positive (FP), but considering the number of false positive there is a balance to find according to business teams, i.e. net loss (FN) vs. shortfall (FP). 
 
 <p align="center">
-  <img width="460" height="300" src="https://github.com/LerysG/Project_7_OC_dashboard/blob/main/output.png?raw=true">
+  <img width="300" height="300" src="https://github.com/LerysG/Project_7_OC_dashboard/blob/main/output.png?raw=true">
 </p>
-
-
 
 
 ## 
