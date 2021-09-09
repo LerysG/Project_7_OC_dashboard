@@ -43,7 +43,7 @@ Here's some observations:
 </p>
 
 ## Dashboard.
-# Implementation.
+### Implementation.
 The interactive dashboard was implemented using **Streamlit** framework and coded in Python. The application *app.py* comes with the following items:
 
 -  Input data that are in the *input* folder. Note that for deployement purposes trainset was randomly sampled to reduce size (125 MB -> 25 MB). 
@@ -51,6 +51,15 @@ The interactive dashboard was implemented using **Streamlit** framework and code
 - A personnal package named *my_functions* containing a module *functions* for function definitions. Note that for app optimization it is of essence to cache the functions. 
 
 - file: *optimized_model.sav*, containing the trained model. The package *pickle* was used to export the model after cross-validation and training. This file is not necessary even for the 1st utilization (if so, you must train model prior to predict).  One is free to better tune hyperparameters and overwrite the given model file.
+
+### Outlines.
+The app is composed of 4 indepenant sections:
+- **🏠 Home**: presenting the project and packages.
+- **👁️ Data, at glance**: showing data overview.
+- **🔎 Further explore data**: plotting data distribution along target.
+- **💪 Model training**: cross-validation with tunable hyperparameters with a possibility to export model.
+- **📈 Test model prediction**: probability predictions for a given client taken from test set (client ID choosed by user) and showing comparison of client with some clients of train set.
+
 
 
 
