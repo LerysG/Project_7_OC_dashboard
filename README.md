@@ -32,12 +32,9 @@ Neither Gradient Boosting Classifier (scikit-learn) nor XGBoost Classifier were 
 ROC and precision-recall curves, confusion matrix and threshold optimization were subsequently performed on a validation set (splitted from application_train data).
 
 
-<div>
-<img src="https://github.com/LerysG/Project_7_OC_dashboard/blob/main/output.png?raw=true" width="500"/>
-</div>
-
-
-![alt text](https://github.com/LerysG/Project_7_OC_dashboard/blob/main/output.png?raw=true)
+<p align="center">
+  <img width="460" height="300" src="https://github.com/LerysG/Project_7_OC_dashboard/blob/main/output.png?raw=true">
+</p>
 
 
 
