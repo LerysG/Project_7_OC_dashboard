@@ -60,7 +60,7 @@ if rad == '🏠 Home':
 
         st.title("Welcome to Lerys' Dashboard! \n ----")
         st.markdown("**Lérys Granado, OpenClassrooms Data Scientist, Project 7, Sept. 2021**")
-        st.markdown("This project was composed of two main objectives: \n \n \
+        st.markdown("This project was composed of two main objectives: \n \
             - Develop a scoring machine learning model to predict the solvency of clients of a bank-like company (i.e. probability of credit payment failure).\
                 It is therefore a **binary classification issue**. Class 0 is solvent client whereas class 1 represents clients with payment difficulties.\n \
                     - Build an interactive dashboard allowing interpretations of these probabilities and improve the company's knowledge on its clients.")
