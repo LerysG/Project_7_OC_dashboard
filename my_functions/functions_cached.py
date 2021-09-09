@@ -32,11 +32,8 @@ def reduce_memory_usage(df):
 
 @st.cache(allow_output_mutation=True)
 def get_data(finename):
-    with open(finename, 'r') as csvfile:  # Sniffing csv to find separator
-        dialect = csv.Sniffer().sniff(csvfile.readline())
-        sep = dialect.delimiter
     df = pd.read_csv(finename,
-                    sep=sep,
+                    sep=',',
                     low_memory=False,
                     verbose=False,
                     encoding='ISO-8859-1',
