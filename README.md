@@ -1,6 +1,9 @@
 # Project 7 - Create a Dashboard - OpenClassrooms
 by Lérys Granado, PhD. Sept. 2021
 
+## Run the dashboard app.
+Go to: https://share.streamlit.io/lerysg/project_7_oc_dashboard/main/app.py
+
 ## General purposes.
 This repo contains a dashboard app for education purposes and answering to the closed Kaggle competition:
 "Home Credit Default Risk" (https://www.kaggle.com/c/home-credit-default-risk)
