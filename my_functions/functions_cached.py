@@ -30,7 +30,7 @@ def reduce_memory_usage(df):
     return df
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache
 def get_data(finename):
     df = pd.read_csv(finename,
                     sep=',',
