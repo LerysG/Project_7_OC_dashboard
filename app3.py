@@ -26,8 +26,6 @@ rad = sb.radio('', ['🏠 Home',
 '💪 Model training',
 '📈 Test model prediction'])
 
-
-
 header = st.container()
 dataset = st.container()
 eda = st.container()
