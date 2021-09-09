@@ -51,9 +51,9 @@ def heatmap(df, max_row):
     fig = px.imshow(df.head(max_row).isna(), color_continuous_scale='OrRd_r')
     fig.update(layout_coloraxis_showscale=True)
     fig.update_layout(coloraxis_colorbar=dict(
-    title="Missing Values",
+    title=" ",
     tickvals=[0,250],
-    ticktext=['0','1'],
+    ticktext=['Recorded','Missing'],
 ))
     fig.update_layout(margin=dict(l=10, r=10, t=10, b=10))
     return fig
