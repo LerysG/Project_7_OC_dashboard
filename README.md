@@ -31,7 +31,7 @@ Neither Gradient Boosting Classifier (scikit-learn) nor XGBoost Classifier were 
 **Comments on the LightGBM Classifier model**:
 - Type: decision tree classifier.
 - Principle: LGBM grows trees at the leaf-level (not from all leaves like other GBs)
-- Optimization: gradiend boosting, histogram-based algorithms.
+- Optimization: gradient boosting, histogram-based algorithms.
 - Loss function: LogLoss.
 - Scoring (here): AUC-ROC.
 - Typical fit time: <1 min (300k samples, 200 features).
