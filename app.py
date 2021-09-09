@@ -20,7 +20,7 @@ sb = st.sidebar
 sb.image('https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.png' ,width=300)
 sb.image('https://enetelsolutions.co.il/wp-content/uploads/2019/08/brain@3x.webp' ,width=300)
 
-rad = sb.radio('', ['🏠 Home', 
+rad = sb.radio('', ['🏠 Home TEST', 
 '👁️ Data, at glance', 
 '🔎 Further explore data', 
 '💪 Model training',
@@ -38,11 +38,12 @@ COLOR_BR_r = ['#00CC96', '#EF553B'] #['dodgerblue', 'indianred']
 COLOR_BR = ['indianred', 'dodgerblue']
 
 #######################################################################################
-# Importing data
-PATH = os.getcwd() 
-PATH_INPUT = PATH+"\\input\\"
+# Managing data import/export
+PATH = "https://share.streamlit.io/lerysg/project_7_oc_dashboard/main/"
+PATH_INPUT = PATH+"input/"
 FILENAME_TRAIN = PATH_INPUT+'application_train_sample.csv'
 FILENAME_TEST = PATH_INPUT+'application_test.csv'
+FILENAME_MODEL = PATH+'optimized_model.sav'
 
 #######################################################################################
 # Implementing containers
@@ -179,7 +180,7 @@ if rad == '💪 Model training':
 
             if checkbox:
                 model.fit(X_train_sc, y_train)
-                filename = 'optimized_model.sav'
+                filename = FILENAME_MODEL
                 pickle.dump(model, open(filename, 'wb'))
                 st.header('**Successful model export!**')
                 st.balloons()
@@ -210,7 +211,7 @@ if rad == '📈 Test model prediction':
             X_train_sc, X_test_sc = preprocess(df_train, df_test)
             y_train = df_train['TARGET']
             
-            model = pickle.load(open('optimized_model.sav', 'rb'))
+            model = pickle.load(open(FILENAME_MODEL, 'rb'))
 
             idx = df_test.SK_ID_CURR[df_test.SK_ID_CURR == input_].index
             y_prob = model.predict_proba(X_test_sc[idx, :])
