@@ -17,7 +17,7 @@ COLOR_BR_r = ['#00CC96', '#EF553B'] #['dodgerblue', 'indianred']
 COLOR_BR = ['indianred', 'dodgerblue']
 #######################################################################################
 # Managing data import/export
-PATH = os.getcwd()+'/' #"/app/project_7_oc_dashboard/"
+PATH = "/app/project_7_oc_dashboard/" # os.getcwd()+'/' 
 PATH_INPUT = PATH+"input/"
 FILENAME_TRAIN = PATH_INPUT+'application_train_sample.csv'
 FILENAME_TEST = PATH_INPUT+'application_test.csv'
