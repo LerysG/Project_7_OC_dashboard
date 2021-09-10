@@ -41,7 +41,7 @@ Neither Gradient Boosting Classifier (scikit-learn) nor XGBoost Classifier were 
 - Interesting for: high performances, class weighing, categorical and sparse data (i.e., one-hot-encoded), accepts NaNs.
 
 <p align="center">
-  <img width="350" height="120" src="https://lightgbm.readthedocs.io/en/latest/_images/leaf-wise.png?raw=true">
+  <img width="350" src="https://lightgbm.readthedocs.io/en/latest/_images/leaf-wise.png?raw=true">
 </p>
 https://lightgbm.readthedocs.io/en/latest/Features.html
 

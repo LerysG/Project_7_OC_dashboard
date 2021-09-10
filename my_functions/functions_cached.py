@@ -39,7 +39,9 @@ def get_data(finename):
                     encoding='ISO-8859-1',
                     dtype={'Special': 'object'}
                     )
-    df = reduce_memory_usage(df)
+    to_drop = df.loc[:, [(x.endswith('_MEDI') or x.endswith('_MODE') ) for x in df.columns]].columns
+    df.drop(columns=to_drop, inplace=True)
+    #df = reduce_memory_usage(df)
     return df
 
 
@@ -57,7 +59,8 @@ def heatmap(df, max_row):
 
 
 @st.cache(allow_output_mutation=True)
-def histogram(df, x='str', legend=True, plot_vline=False, vline=None):
+def histogram(df, x='str', legend=True, client=None): 
+    '''client = [df_test, input_client] '''
     if x == "TARGET":
         fig = px.histogram(df,
                         x=x,
@@ -83,7 +86,9 @@ def histogram(df, x='str', legend=True, plot_vline=False, vline=None):
         fig.update_layout(legend=dict(yanchor="top",xanchor="right"))
     else:
         fig.update_layout(showlegend=False)
-    if plot_vline == True:
+    if client:
+        client_data = client[0][client[0].SK_ID_CURR ==  client[1]]
+        vline = client_data[x].to_numpy()[0]
         fig.add_vline(x=vline, line_width=3, line_dash="dash", line_color="black")
     return fig  
 
@@ -95,7 +100,7 @@ def preprocess(df_train, df_test):
     from their respectives dfs.
     /!\ num_feat must be fit on train and
     cat_feat needs to be fit on both train+test...
-    /!\ there are 2 outputs X_train and X_test!!!
+    /!\ there are 3 outputs X_train,  X_test & feat!!!
     '''
     st.write('Preprocessing data...')
     my_bar = st.progress(0)
@@ -106,10 +111,6 @@ def preprocess(df_train, df_test):
     X_test, _ = X_test.align(X_train)
     my_bar.progress(1) 
 
-    for col in X_train.columns:
-        if col.endswith("_MEDI") or col.endswith("_MODE"):
-            X_train.drop(columns=col, inplace=True)
-            X_test.drop(columns=col, inplace=True)
     my_bar.progress(8)
 
     X = pd.concat([X_train, X_test])
@@ -140,7 +141,12 @@ def preprocess(df_train, df_test):
     output_train, output_test =  prep.transform(X_train), prep.transform(X_test)
     my_bar.progress(100) 
 
-    return output_train, output_test  
+    onehot_feat = list(prep.named_transformers_[
+                      'cat'].get_feature_names(input_features=cat_feat))
+    
+    feat_list = np.concatenate((num_feat, onehot_feat))
+
+    return output_train, output_test, feat_list  
 
 
 #######################################################################################
