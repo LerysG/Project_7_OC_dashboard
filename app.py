@@ -250,7 +250,7 @@ if rad == '📈 Test model prediction':
         st.subheader("More information about this client.")
         col1, col2 = st.columns(2)
         info = col1.selectbox('What info?', client.columns.sort_values())     
-        info_print = round(client[info].to_numpy()[0],1)
+        info_print = client[info].to_numpy()[0]
 
         col1.subheader(info_print)
         col2.write("All client's data.")
