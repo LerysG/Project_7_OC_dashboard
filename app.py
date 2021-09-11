@@ -34,7 +34,8 @@ df_test = get_data(FILENAME_TEST)
 
 sb = st.sidebar
 sb.image('https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.png', width=300)
-sb.image('https://pixabay.com/fr/images/download/brain-6215574_640.jpg', width=300)
+_,center,_= sb.columns(3)
+center.image('https://pixabay.com/fr/images/download/brain-6215574_640.jpg', width=150)
 sb.markdown('**Who are you?**')
 rad_who = sb.radio('', ['👨‍⚕️ Data Scientist', '🤵 Bank Clerk'])
 
@@ -43,8 +44,7 @@ if rad_who == '👨‍⚕️ Data Scientist':
     rad = sb.radio('', ['🏠 Home', 
     '👁️ Data, at glance', 
     '🔎 Further explore data', 
-    '💪 Model training',
-    '📈 Test model prediction'])
+    '💪 Model training'])
 elif rad_who == '🤵 Bank Clerk':
     sb.markdown('**Client to scout:**')
     np.random.seed(13)
@@ -212,64 +212,6 @@ if rad == '💪 Model training':
                 st.header('**Successful model export!**')
                 st.balloons()
 
-#######################################################################################
-if rad == '📈 Test model prediction': 
-    with model_predict:
-        st.header("**Testset model prediction.** \n ----")
-
-        np.random.seed(13)
-        label_test = df_test['SK_ID_CURR'].sample(50).sort_values()
-        col1, col2 = st.columns(2)
-        col1.subheader("**Pick a test client to scout.**")
-
-        radio = col1.radio('Select strategy:', ['Random client ID', 'Type client ID'])
-        if radio == 'Random client ID':
-            input_client = col1.selectbox('Select random client ID', label_test)
-        if radio == 'Type client ID':
-            input_client = int(col1.text_input('Type client ID', value=100001))
-
-        if col1.button('Predict & plot!'):                    
-            X_train_sc, X_test_sc, imp_feat = preprocess(df_train, df_test)
-            y_train = df_train['TARGET']
-            model = pickle.load(open(FILENAME_MODEL, 'rb'))
-            idx = df_test.SK_ID_CURR[df_test.SK_ID_CURR == input_client].index
-            y_prob = model.predict_proba(X_test_sc[idx, :])
-            y_prob = [y_prob.flatten()[0], y_prob.flatten()[1]]
-
-            if y_prob[1] < y_prob[0]:
-                col2.subheader(f"**Successful payment probability for client #{input_client}.**")
-            else:
-                col2.subheader(f"**Failure payment probability for client #{input_client}.**")
-
-            fig = px.pie(values=y_prob, names=[0,1], color_discrete_sequence=COLOR_BR_r, 
-            width=270, height=270)
-            fig.update_layout(margin=dict(l=70, r=0, t=0, b=70))
-            fig.update_layout(legend=dict(yanchor="top",xanchor="right"))
-            col2.plotly_chart(fig, use_container_width=True)
-
-        st.subheader(f"**Let's compare client (as ----) to other ones from trainset.**")
-        client_data = df_test[df_test.SK_ID_CURR == input_client]
-        client_data = client_data.dropna(axis=1)
-
-        col1, col2 = st.columns(2)
-        col1.markdown("Pick one numerical feature.")
-        num_col = client_data.select_dtypes(include=np.number).columns.sort_values()
-        input_num = col1.selectbox('Num plot', num_col)
-        col2.markdown("Pick one categorical feature.")
-        cat_col = client_data.select_dtypes(exclude=np.number).columns.sort_values()
-        input_cat = col2.selectbox('Cat plot', cat_col)
-
-        col1.plotly_chart(histogram(df_train, x=input_num, client=[df_test, input_client]),use_container_width=True)
-        col2.plotly_chart(histogram(df_train, x=input_cat, client=[df_test, input_client]),use_container_width=True)
-        
-        st.subheader("More information about this client.")
-        col1, col2 = st.columns(2)
-        info = col1.selectbox('What info?', client_data.columns.sort_values())     
-        info_print = client_data[info].to_numpy()[0]
-
-        col1.subheader(info_print)
-        col2.write("All client's data.")
-        col2.write(client_data)
 
 #######################################################################################
 if rad == '🔎 Client data': 

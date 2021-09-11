@@ -78,7 +78,7 @@ The app will change drastically depending on who consults it:
   - **👁️ Data, at glance**: showing data overview.
   - **🔎 Further explore data**: plotting data distribution along with target.
   - **💪 Model training**: cross-validation with tunable hyperparameters with a possibility to export model.
-  - **📈 Test model prediction**: probability predictions for a given client taken from test set (client ID choosed by user) and showing comparison of client with some clients of train set.
+
 - **🤵 Bank Clerk** being client-oriented, allowing selection of a client to scout directly from the sidebar, with:
   - **🏠 Home**: presenting the project and packages.
   - **🔎 Client data**: showing client's data overview.
