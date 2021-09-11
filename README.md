@@ -72,12 +72,17 @@ This interactive dashboard was implemented using **Streamlit** framework and cod
 - The file: *optimized_model.sav*, containing the trained model. The package *pickle* was used to export the model after cross-validation and training. This file is not necessary even for the 1st utilization (if so, you must train model prior to predict).  One is free to better tune hyperparameters and overwrite the given model file.
 
 ### Outlines.
-The app is composed of 5 indepenant sections:
-- **🏠 Home**: presenting the project and packages.
-- **👁️ Data, at glance**: showing data overview.
-- **🔎 Further explore data**: plotting data distribution along with target.
-- **💪 Model training**: cross-validation with tunable hyperparameters with a possibility to export model.
-- **📈 Test model prediction**: probability predictions for a given client taken from test set (client ID choosed by user) and showing comparison of client with some clients of train set.
+The app will change drastically depending on who consults it:
+- **👨‍⚕️ Data Scientist** being data-oriented, with:
+  - **🏠 Home**: presenting the project and packages.
+  - **👁️ Data, at glance**: showing data overview.
+  - **🔎 Further explore data**: plotting data distribution along with target.
+  - **💪 Model training**: cross-validation with tunable hyperparameters with a possibility to export model.
+  - **📈 Test model prediction**: probability predictions for a given client taken from test set (client ID choosed by user) and showing comparison of client with some clients of train set.
+- **🤵 Bank Clerk** being client-oriented, allowing selection of a client to scout directly from the sidebar, with:
+  - **🏠 Home**: presenting the project and packages.
+  - **🔎 Client data**: showing client's data overview.
+  - **📉 Client prediction**: predicting client's probability of being positive or negative, along with the most important features that lead to this decision.
 
 ### Comments on this app.
 - It was very easily implemented since coding was only done in Python (no HTML nor JS required).
