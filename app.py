@@ -34,8 +34,7 @@ df_test = get_data(FILENAME_TEST)
 
 sb = st.sidebar
 sb.image('https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.png', width=300)
-_,center,_= sb.columns(3)
-sb.image('https://pixabay.com/fr/images/download/brain-6215574_640.jpg', width=150)
+sb.image('https://pixabay.com/fr/images/download/brain-6215574_640.jpg', width=300)
 sb.markdown('**Who are you?**')
 rad_who = sb.radio('', ['👨‍⚕️ Data Scientist', '🤵 Bank Clerk'])
 
