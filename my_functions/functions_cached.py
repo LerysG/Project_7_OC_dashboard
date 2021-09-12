@@ -89,6 +89,7 @@ def histogram(df, x='str', legend=True, client=None):
     if client:
         client_data = client[0][client[0].SK_ID_CURR ==  client[1]]
         vline = client_data[x].to_numpy(dtype="float")[0]
+        print(vline)
         
         fig.add_vline(x=vline, line_width=3, line_dash="dash", line_color="black")
     return fig  
