@@ -72,7 +72,7 @@ model_predict = st.container()
 # Implementing containers
 #######################################################################################
 
-if rad == '🏠 Home':
+if rad == '🏠 Home': # with this we choose which container to display on the screen
     with header:
         a,z,e,r,t = st.columns(5) #OOP style 
         a.image('https://icon-icons.com/downloadimage.php?id=168039&root=2699/PNG/512/&file=python_vertical_logo_icon_168039.png', width=60)
